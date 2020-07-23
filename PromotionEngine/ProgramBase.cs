@@ -15,24 +15,30 @@ namespace PromotionEngine
         {
             _promotions = new List<Promotion>
             {
-                new Promotion{IsActive=true,SkuId="A",Quantity=3,DiscountPrice=20},
-                new Promotion{IsActive=true,SkuId="B",Quantity=2,DiscountPrice=15},
-                new Promotion{IsActive=true,SkuId="C", Quantity=3},
-                new Promotion{IsActive=true,SkuId="D",Quantity=1}
+                new Promotion{IsActive=true,PromotionType=PromotionType.NitemsFixedPrice, SkuId="A",Quantity=3,DiscountPrice=20},
+                new Promotion{IsActive=true,PromotionType=PromotionType.NitemsFixedPrice,SkuId="B",Quantity=2,DiscountPrice=15},
+                new Promotion{IsActive=true,PromotionType=PromotionType.NskuFixedPrice,SkuId="C", Quantity=3},
+                new Promotion{IsActive=true,PromotionType=PromotionType.NskuFixedPrice,SkuId="D",Quantity=1}
             };
             basePrices = new Dictionary<string, int>() { { "A", 50 }, { "B", 30 }, { "C", 20 }, { "D", 15 } };
         }
 
         protected static double BuyNitemsForFixedPrice(IDictionary<string, int> cart)
         {
+            List<Product> products = new List<Product>();
             double totalPrice = default;
-            Product p;
-            foreach (var product in cart)
+            Product product = default;
+
+            //n items Fixed Price Prmotion
+            var promotions = _promotions.Where(p => p.PromotionType == PromotionType.NitemsFixedPrice).ToList();
+            var list = cart.Where(s => promotions.Any(a => a.SkuId == s.Key)).ToList();
+            foreach (var p in list)
             {
-                p = new Product() { Key = product.Key, Quantity = product.Value };
-                var nItemsForFixedPriceSpecification = new NitemsForFixedPriceSpecification(p, _promotions, basePrices);
-                totalPrice += nItemsForFixedPriceSpecification.IsSatisfiedBy(p);
+                product = new Product() { Key = p.Key, Quantity = p.Value };
+                var nItemsForFixedPriceSpecification = new NitemsForFixedPriceSpecification(product, promotions, basePrices);
+                totalPrice += nItemsForFixedPriceSpecification.IsSatisfiedBy(product);
             }
+
             return totalPrice;
         }
     }
@@ -55,6 +61,7 @@ namespace PromotionEngine
 
     public enum PromotionType
     {
-        NitemsFixedPrice
+        NitemsFixedPrice,
+        NskuFixedPrice
     }
 }

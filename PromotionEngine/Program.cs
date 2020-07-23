@@ -15,7 +15,7 @@ namespace PromotionEngine
                 var quantity = Convert.ToInt32(Console.ReadLine());
                 if (quantity != 0) //ignore 0 quantities
                 {
-                    cart.Add(new KeyValuePair<string, int>(item.Key,quantity));
+                    cart.Add(new KeyValuePair<string, int>(item.Key, quantity));
                 }
             }
 

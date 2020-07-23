@@ -12,6 +12,10 @@ namespace PromotionEngine.Specifications
         protected IDictionary<string, int> _basePrices;
         private readonly Product _product;
 
+        public NitemsForFixedPriceSpecification()
+        {
+
+        }
         public NitemsForFixedPriceSpecification(Product product, List<Promotion> promotions, IDictionary<string, int> basePrices)
         {
             _product = product;
