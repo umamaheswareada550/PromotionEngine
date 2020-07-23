@@ -1,0 +1,12 @@
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.exe
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.deps.json
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.runtimeconfig.json
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.runtimeconfig.dev.json
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.dll
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\bin\Debug\netcoreapp3.1\PromotionEngine.pdb
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.AssemblyInfoInputs.cache
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.AssemblyInfo.cs
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.csproj.CoreCompileInputs.cache
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.dll
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.pdb
+C:\Users\eada_uma_maheswara_r\source\repos\PromotionEngine\PromotionEngine\obj\Debug\netcoreapp3.1\PromotionEngine.genruntimeconfig.cache
