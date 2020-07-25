@@ -14,7 +14,6 @@ namespace PromotionEngine.Specifications
 
         public NitemsForFixedPriceSpecification()
         {
-
         }
         public NitemsForFixedPriceSpecification(Product product, List<Promotion> promotions, IDictionary<string, int> basePrices)
         {
@@ -23,16 +22,16 @@ namespace PromotionEngine.Specifications
             _basePrices = basePrices;
         }
 
-        public override Expression<Func<Product, double>> ToExpression()
+        public override Expression<Func<Product, Product>> ToExpression()
         {
             var promotion = _promotions.Where(p => p.SkuId == _product.Key).FirstOrDefault();
-            switch (_product.Quantity % promotion.Quantity)
-            {
-                case 0: _product.Price = _basePrices[_product.Key] * _product.Quantity - promotion.DiscountPrice; break;
-                default: _product.Price = _basePrices[_product.Key] * _product.Quantity; break;
-            }
+            double actualPrice = _basePrices[_product.Key] * _product.Quantity;
+            if (_product.Quantity % promotion.Quantity == 0)
+                _product.Price = actualPrice - (promotion.DiscountPrice * _product.Quantity / promotion.Quantity);
+            else
+                _product.Price = actualPrice;
 
-            return _product => _product.Price;
+            return _product => _product;
         }
     }
 }

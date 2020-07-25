@@ -19,10 +19,10 @@ namespace PromotionEngine
                 }
             }
 
-            double totalPrice = BuyNitemsForFixedPrice(cart);
+            List<Product> products = GetProductsWithPrice(cart);
 
             Console.WriteLine("Cart Summary :" + string.Join(',', cart.Select(c => c.Key + "(" + c.Value + ")")));
-            Console.WriteLine("Total Price: " + totalPrice);
+            Console.WriteLine("Total Price: " + string.Join(',', products.Sum(c => c.Price)));
             Console.ReadLine();
         }
     }

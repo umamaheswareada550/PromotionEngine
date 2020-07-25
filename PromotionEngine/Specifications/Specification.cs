@@ -11,11 +11,11 @@ namespace PromotionEngine.Specifications
         {
         }
 
-        public abstract Expression<Func<T, double>> ToExpression();
+        public abstract Expression<Func<T, T>> ToExpression();
 
-        public double IsSatisfiedBy(T entity)
+        public T IsSatisfiedBy(T entity)
         {
-            Func<T, double> predicate = ToExpression().Compile();
+            Func<T, T> predicate = ToExpression().Compile();
             return predicate(entity);
         }
     }
