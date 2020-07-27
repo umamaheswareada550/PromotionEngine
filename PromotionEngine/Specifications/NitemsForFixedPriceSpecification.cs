@@ -8,29 +8,27 @@ namespace PromotionEngine.Specifications
 {
     public class NitemsForFixedPriceSpecification : Specification<Product>
     {
-        protected List<Promotion> _promotions;
+        protected Promotion _promotion;
         protected IDictionary<string, int> _basePrices;
         private readonly Product _product;
 
         public NitemsForFixedPriceSpecification()
         {
         }
-        public NitemsForFixedPriceSpecification(Product product, List<Promotion> promotions, IDictionary<string, int> basePrices)
+        public NitemsForFixedPriceSpecification(Product product, Promotion promotion, IDictionary<string, int> basePrices)
         {
             _product = product;
-            _promotions = promotions;
+            _promotion = promotion;
             _basePrices = basePrices;
         }
 
         public override Expression<Func<Product, Product>> ToExpression()
         {
-            var promotion = _promotions.Where(p => p.SkuId == _product.Key).FirstOrDefault();
             double actualPrice = _basePrices[_product.Key] * _product.Quantity;
-            if (_product.Quantity % promotion.Quantity == 0)
-                _product.Price = actualPrice - (promotion.DiscountPrice * _product.Quantity / promotion.Quantity);
+            if (_product.Quantity % _promotion.Quantity == 0)
+                _product.Price = actualPrice - _promotion.DiscountPrice * (_product.Quantity / _promotion.Quantity);
             else
-                _product.Price = actualPrice;
-
+                _product.Price = actualPrice - (_product.Quantity / _promotion.Quantity) * _promotion.DiscountPrice;
             return _product => _product;
         }
     }

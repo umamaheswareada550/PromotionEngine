@@ -13,16 +13,16 @@ namespace PromotionEngine
             {
                 Console.WriteLine("Enter the quantity for " + item.Key);
                 var quantity = Convert.ToInt32(Console.ReadLine());
-                if (quantity != 0) //ignore 0 quantities
+                if (quantity > 0) //ignore lessthan or equal to 0 quantities
                 {
                     cart.Add(new KeyValuePair<string, int>(item.Key, quantity));
                 }
             }
-
-            List<Product> products = GetProductsWithPrice(cart);
-
             Console.WriteLine("Cart Summary :" + string.Join(',', cart.Select(c => c.Key + "(" + c.Value + ")")));
-            Console.WriteLine("Total Price: " + string.Join(',', products.Sum(c => c.Price)));
+
+            List<Product> products = GetItemsPrices(cart);
+
+            Console.WriteLine(string.Format("Total Price: {0} = {1}", string.Join('+', products.Select(c => c.Price)), products.Sum(c => c.Price)));
             Console.ReadLine();
         }
     }
