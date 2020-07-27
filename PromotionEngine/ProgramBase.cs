@@ -26,7 +26,7 @@ namespace PromotionEngine
         }
 
         //n items Fixed Price Prmotion
-        protected static List<Product> GetNitemsForFixedPrice(IDictionary<string, int> cart)
+        public static List<Product> GetNitemsForFixedPrice(IDictionary<string, int> cart)
         {
             List<Product> products = new List<Product>();
             object[] parameters;
@@ -45,7 +45,7 @@ namespace PromotionEngine
         }
 
         //n sku's Fixed Price Promotion
-        protected static List<Product> GetItemsPrices(IDictionary<string, int> cart)
+        public static List<Product> GetItemsPrices(IDictionary<string, int> cart)
         {
             List<Product> products = new List<Product>();
             var combinationPromotions = _promotions.Where(p => p.SkuId.Split(',').Count() > 1).ToList();
